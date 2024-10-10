@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "name": "Gold Necklace",
+      "price": 250,
+      "description": "Beautiful 18K gold necklace.",
+      "category": "Necklaces",
+      "imageUrl": "https://example.com/images/necklace.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Diamond Ring",
+      "price": 1200,
+      "description": "Elegant diamond ring.",
+      "category": "Rings",
+      "imageUrl": "https://example.com/images/ring.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Silver Bracelet",
+      "price": 350,
+      "description": "Stylish silver bracelet.",
+      "category": "Bracelets",
+      "imageUrl": "https://example.com/images/bracelet.jpg"
+    }
+  ]
+  
