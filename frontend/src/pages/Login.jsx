@@ -10,13 +10,13 @@ function Ligin() {
   async function handleLogin(values) {
     const response = await axios.post("http://localhost:5000/api/auth/login", {
       username: "joss",
-      password: "exaassssword123",
+      password: "exaassssword123"
     });
     console.log(response);
     console.log(values);
     if (response.status === 200) {
       console.log(response.data.token);
-      localStorage.setItem("usertoken", response.data.token);
+      localStorage.setItem("userToken", response.data.token);
       navigate("/");
     }
   }
@@ -48,7 +48,7 @@ function Ligin() {
     onSubmit: handleLogin,
   });
   return (
-    <div className="d-flex w-100 flex-column flex-md-row">
+    <div className="d-flex w-100 flex-column flex-md-row" style={{ display: "flex", height: "100vh" }}>
       <div className="w-md-50 w-100 p-2 p-md-5 m-md-5 mt-5 mx-auto py-4">
         <form onSubmit={formik.handleSubmit}>
           <h1>

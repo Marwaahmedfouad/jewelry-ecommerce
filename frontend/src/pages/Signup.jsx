@@ -60,7 +60,7 @@ function Signup() {
     onSubmit: handleRegister,
   });
   return (
-    <div className="d-flex w-100 flex-column flex-md-row">
+    <div className="d-flex w-100 flex-column flex-md-row p-0 m-0" style={{ display: "flex", height: "100vh" }}>
       <div className="w-md-50 w-100 p-2 p-md-5 m-md-5 mt-5 mx-auto py-4">
         <form onSubmit={formik.handleSubmit}>
           <h1 className="h2 mb-4" style={{ color: "#c07b0d" }}>

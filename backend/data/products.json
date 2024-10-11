@@ -1,27 +1,107 @@
 [
-    {
-      "id": 1,
-      "name": "Gold Necklace",
-      "price": 250,
-      "description": "Beautiful 18K gold necklace.",
-      "category": "Necklaces",
-      "imageUrl": "https://example.com/images/necklace.jpg"
-    },
-    {
-      "id": 2,
-      "name": "Diamond Ring",
-      "price": 1200,
-      "description": "Elegant diamond ring.",
-      "category": "Rings",
-      "imageUrl": "https://example.com/images/ring.jpg"
-    },
-    {
-      "id": 3,
-      "name": "Silver Bracelet",
-      "price": 350,
-      "description": "Stylish silver bracelet.",
-      "category": "Bracelets",
-      "imageUrl": "https://example.com/images/bracelet.jpg"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "name": "Gold Necklace",
+    "description": "Elegant gold necklace with intricate design.",
+    "price": 199.99,
+    "image": "link-to-image1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Diamond Ring",
+    "description": "Stunning diamond ring perfect for any occasion.",
+    "price": 299.99,
+    "image": "link-to-image2.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Silver Bracelet",
+    "description": "Beautiful silver bracelet with gemstone accents.",
+    "price": 149.99,
+    "image": "link-to-image3.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Pearl Earrings",
+    "description": "Classic pearl earrings, a timeless addition to any jewelry collection.",
+    "price": 89.99,
+    "image": "link-to-image4.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Platinum Wedding Band",
+    "description": "Sleek platinum wedding band, perfect for everlasting love.",
+    "price": 399.99,
+    "image": "link-to-image5.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Ruby Pendant",
+    "description": "Exquisite ruby pendant necklace, ideal for special occasions.",
+    "price": 249.99,
+    "image": "link-to-image6.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Sapphire Tennis Bracelet",
+    "description": "Elegant tennis bracelet adorned with stunning sapphires.",
+    "price": 349.99,
+    "image": "link-to-image7.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Vintage Brooch",
+    "description": "Unique vintage brooch that adds a touch of elegance.",
+    "price": 129.99,
+    "image": "link-to-image8.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Leather Wrap Watch",
+    "description": "Stylish leather wrap watch that complements any outfit.",
+    "price": 79.99,
+    "image": "link-to-image9.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Emerald Stud Earrings",
+    "description": "Dazzling emerald stud earrings, perfect for day or night wear.",
+    "price": 119.99,
+    "image": "link-to-image10.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Gold Cufflinks",
+    "description": "Sophisticated gold cufflinks for formal occasions.",
+    "price": 89.99,
+    "image": "link-to-image11.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Charm Bracelet",
+    "description": "Personalized charm bracelet to showcase your unique style.",
+    "price": 109.99,
+    "image": "link-to-image12.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Aquamarine Necklace",
+    "description": "Stunning aquamarine necklace, perfect for springtime outfits.",
+    "price": 199.99,
+    "image": "link-to-image13.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Titanium Ring",
+    "description": "Durable titanium ring with a modern design.",
+    "price": 159.99,
+    "image": "link-to-image14.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Silver Ankle Bracelet",
+    "description": "Charming silver ankle bracelet for a beachy look.",
+    "price": 49.99,
+    "image": "link-to-image15.jpg"
+  }
+]
