@@ -11,20 +11,20 @@ import ProductDetail from "./pages/ProductDetail";
 // import Profile from "./pages/Profile";
 import Signup from "./pages/Signup";
 import HeadlessDemo from "./components/HeadlessDemo";
-
-
+  
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
+        
           <Route path="/" element={<Layout />}>
             <Route index element={<Home/>} />
             <Route path="/cart" element={<Cart />}/>
             <Route path="/checkout" element={<Checkout />}/>
-            <Route path="/login" element={<Login />}/>
             <Route path="/orderConfirmation" element={<OrderConfirmation />}/>
             <Route path="/product" element={<Product />}/>
+            <Route path="/login" element={<Login />}/>
             <Route path="/productDetail" element={<ProductDetail />}/>
             <Route path="/HeadlessDemo" element={<HeadlessDemo />}/>
             <Route path="/Signup" element={<Signup />}/>

@@ -1,27 +1,35 @@
+// server.js
+
 const express = require('express');
-const fs = require('fs');  // File system to read JSON data
+const cors = require('cors');
+const authRoutes = require('./routes/auth');
+const productRoutes = require('./routes/products');
+
 const app = express();
 const PORT = 5000;
 
-// Middleware to parse JSON requests (if you want to accept POST requests later)
+// Enable CORS for all routes
+app.use(cors({
+  origin: 'http://localhost:3000', // Your frontend origin
+  methods: ['GET', 'POST'], // Allowed HTTP methods
+  credentials: true, // If you're sending cookies or authentication headers
+}));
+
+// Middleware to parse JSON requests
 app.use(express.json());
 
-// Read mock data from products.json (we'll create this file next)
-const products = JSON.parse(fs.readFileSync('./data/products.json', 'utf-8'));
-
-// Endpoint to get all products
-app.get('/api/products', (req, res) => {
-  res.json(products);
-});
-
-// Endpoint to get a single product by ID
-app.get('/api/products/:id', (req, res) => {
-  const product = products.find(p => p.id === parseInt(req.params.id));
-  if (!product) return res.status(404).send('Product not found');
-  res.json(product);
-});
+// Use the routes
+app.use('/api/auth', authRoutes);
+app.use('/api/products', productRoutes);
 
 // Start server
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
+
+
+app.use(cors({
+  origin: 'http://localhost:3000', // Your frontend origin
+  methods: ['GET', 'POST'], // Allowed HTTP methods
+  credentials: true, // If you're sending cookies or authentication headers
+}));
