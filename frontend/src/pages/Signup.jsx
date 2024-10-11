@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import registerimage from "../assets/register.jpg";
 import axios from "axios";
@@ -63,10 +63,9 @@ function Signup() {
     <div className="d-flex w-100 flex-column flex-md-row">
       <div className="w-md-50 w-100 p-2 p-md-5 m-md-5 mt-5 mx-auto py-4">
         <form onSubmit={formik.handleSubmit}>
-            
-            <h1 className="h2 mb-4" style={{ color: "#c07b0d" }}>
-              Join us and discover timeless elegance
-            </h1>
+          <h1 className="h2 mb-4" style={{ color: "#c07b0d" }}>
+            Join us and discover timeless elegance
+          </h1>
           <label htmlFor="username">username</label>
           <input
             className="form-control mb-1 mt-2 border-secondary"
@@ -115,13 +114,23 @@ function Signup() {
 
           {
             <div className="text-center mt-4 ">
-              <button
-                className="btn w-25 text-white"
-                type="submit"
-                style={{ backgroundColor: "rgb(151 80 44)" }}
-              >
-                Submit
-              </button>
+              {isloading ? (
+                <button
+                  type="button"
+                  className="btn w-25 text-white"
+                  style={{ backgroundColor: "rgb(151 80 44)" }}
+                >
+                  <i class="fa-solid fa-spinner"></i>
+                </button>
+              ) : (
+                <button
+                  className="btn w-25 text-white"
+                  type="submit"
+                  style={{ backgroundColor: "rgb(151 80 44)" }}
+                >
+                  Submit
+                </button>
+              )}
             </div>
           }
         </form>

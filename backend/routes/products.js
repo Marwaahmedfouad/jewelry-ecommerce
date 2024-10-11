@@ -1,11 +1,9 @@
-// routes/products.js
-
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const router = express.Router();
 
-let products = []; // Mock products data
+let products = [];
 
-// Middleware to authenticate token (example implementation)
 function authenticateToken(req, res, next) {
   const token = req.headers['authorization'];
   if (!token) return res.sendStatus(401);
@@ -17,7 +15,6 @@ function authenticateToken(req, res, next) {
   });
 }
 
-// Middleware to check if user is an admin (example implementation)
 function isAdmin(req, res, next) {
   if (req.user.role !== 'admin') return res.sendStatus(403);
   next();

@@ -1,35 +1,51 @@
-// server.js
-
+// Import necessary modules
 const express = require('express');
-const cors = require('cors');
-const authRoutes = require('./routes/auth');
-const productRoutes = require('./routes/products');
+const bcrypt = require('bcryptjs'); // For password hashing
+const jwt = require('jsonwebtoken'); // For generating tokens
+const User = require('../models/User'); // Your User model
 
+const router = express.Router();
+
+// POST login endpoint
+router.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    // 1. Check if the user exists by email (or username)
+    const user = await User.findOne({ email }); // or { username: req.body.username }
+
+    if (!user) {
+      return res.status(400).json({ message: 'User not found. Please register first.' });
+    }
+
+    // 2. Validate the password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+
+    // 3. Generate a token if the password matches
+    const token = jwt.sign({ userId: user._id }, 'your_secret_key', {
+      expiresIn: '1h', // Token expiration time
+    });
+
+    // 4. Send the token to the client
+    res.status(200).json({ token, message: 'Login successful' });
+  } catch (error) {
+    console.error('Login error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+const express = require('express');
+const authRoutes = require('./auth');
 const app = express();
-const PORT = 5000;
 
-// Enable CORS for all routes
-app.use(cors({
-  origin: 'http://localhost:3000', // Your frontend origin
-  methods: ['GET', 'POST'], // Allowed HTTP methods
-  credentials: true, // If you're sending cookies or authentication headers
-}));
-
-// Middleware to parse JSON requests
 app.use(express.json());
 
-// Use the routes
 app.use('/api/auth', authRoutes);
-app.use('/api/products', productRoutes);
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+app.listen(5000, () => {
+  console.log('Server running on port 5000');
 });
 
-
-app.use(cors({
-  origin: 'http://localhost:3000', // Your frontend origin
-  methods: ['GET', 'POST'], // Allowed HTTP methods
-  credentials: true, // If you're sending cookies or authentication headers
-}));
+module.exports = router;
