@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import registerimage from "../assets/register.jpg";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
   const navigate = useNavigate();
@@ -60,7 +60,10 @@ function Signup() {
     onSubmit: handleRegister,
   });
   return (
-    <div className="d-flex w-100 flex-column flex-md-row p-0 m-0" style={{ display: "flex", height: "100vh" }}>
+    <div
+      className="d-flex w-100 flex-column flex-md-row p-0 m-0"
+      style={{ display: "flex", height: "100vh" }}
+    >
       <div className="w-md-50 w-100 p-2 p-md-5 m-md-5 mt-5 mx-auto py-4">
         <form onSubmit={formik.handleSubmit}>
           <h1 className="h2 mb-4" style={{ color: "#c07b0d" }}>
@@ -134,6 +137,12 @@ function Signup() {
             </div>
           }
         </form>
+        <div className="text-center pt-3">
+          Already have an account ?
+          <Link to={"/login"} className="text-decoration-none">
+            Sign in
+          </Link>
+        </div>
       </div>
 
       <div className="col-12 col-md-6">
