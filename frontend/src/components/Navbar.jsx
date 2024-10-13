@@ -7,22 +7,19 @@ import { clearUserData, saveUserData } from "../Redux/authenticatinoSlice";
 import { useEffect } from "react";
 
 export default function Navbar() {
+  const { userData } = useSelector((state) => state.authProjext);
 
-const {userData}=useSelector((state)=>state.authProjext)
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    // Clear the token from session storage using the correct key
+    sessionStorage.removeItem("userToken"); // Note: "userToken", not "usertoken"
+    // Dispatch the action to clear user data from Redux
+    dispatch(clearUserData());
+  };
 
-const dispatch=useDispatch()
-const handleLogout = () => {
-  // Clear the token from session storage using the correct key
-  sessionStorage.removeItem("userToken"); // Note: "userToken", not "usertoken"
-  // Dispatch the action to clear user data from Redux
-  dispatch(clearUserData());
-  
-};
-
-useEffect(() => {
-  console.log("User Data:", userData); // Log the userData value
-}, [userData]);
-
+  useEffect(() => {
+    console.log("User Data:", userData); // Log the userData value
+  }, [userData]);
 
   const itemRenderer = (item) => (
     <Link
@@ -44,7 +41,7 @@ useEffect(() => {
     {
       label: "JEWELRY",
       template: itemRenderer,
-      link: "/login",
+      link: "/",
     },
     {
       label: "NEW RELEASES",
@@ -69,46 +66,42 @@ useEffect(() => {
           className="w-8rem sm:w-auto"
         />
       </div>
+
       <div className="px-2">
-        <Link to="/login">
-          <i className="pi pi-user" style={{ color: "#708090" }}></i>
-        </Link>
-      </div>
-      <div className="px-2">
-        <Link to="/Product">
+        <Link to="/cart">
           <i className="pi pi-shopping-bag" style={{ color: "#708090" }}></i>
         </Link>
       </div>
+
+      <div className="px-1">
+        <Link
+          to="/Signup"
+          className="btn btn-outline-secondary"
+          style={{ textDecoration: "none", color: "inherit" }}
+          onClick={handleLogout}
+        >
+          <i className="pi pi-user-plus" style={{ color: "inherit" }}></i>
+        </Link>
+      </div>
+
       <div className="px-1 ">
         <Link
           to="/login"
           className="btn btn-outline-secondary"
           style={{ textDecoration: "none", color: "inherit" }}
         >
-          Login <i className="pi pi-sign-in" style={{ color: "inherit" }}></i>
+          <i className="pi pi-sign-in" style={{ color: "inherit" }}></i>
         </Link>
       </div>
 
       <div className="px-1">
-        <Link
-          to="/login"
-          className="btn btn-outline-secondary"
-          style={{ textDecoration: "none", color: "inherit" }}
-        >
-          Signup <i className="pi pi-sign-out" style={{ color: "inherit" }}></i>
-        </Link>
-      </div>
-
-      <div className="px-1">
-        <Link
-          to="/login"
+        <button
           className="btn btn-outline-secondary"
           style={{ textDecoration: "none", color: "inherit" }}
           onClick={handleLogout}
         >
-          Logout
-          <i className="pi pi-user-plus" style={{ color: "inherit" }}></i>
-        </Link>
+          <i className="pi pi-sign-out" style={{ color: "inherit" }}></i>
+        </button>
       </div>
     </div>
   );
@@ -119,6 +112,3 @@ useEffect(() => {
     </div>
   );
 }
-
-
-
