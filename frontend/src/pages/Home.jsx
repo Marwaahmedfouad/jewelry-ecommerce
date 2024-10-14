@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { fetchProducts } from "../Redux/ProductsSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Home() {
   const dispatch = useDispatch();
@@ -41,13 +42,15 @@ function Home() {
      
              {products.map((p, index) => (
                   <div className="col-md-3 mb-3" style={{cursor:'pointer'}} key={index}>
-                    <div className="card h-100">
+           <Link to={`ProductDetail/${p.id}`}>
+           <div className="card h-100">
                       <div className="card-body">
                         <h5 className="card-title"> {p.name}</h5>
                         <p className="card-text">{p.description}</p>
                         <p className="card-text">{p.price}EGP</p>
                       </div>
                     </div>
+           </Link>
                   </div>
               ))} 
 
