@@ -19,3 +19,11 @@ code {
 .p-menubar .p-menuitem-link {
   text-decoration: none !important; /* Important to override */
 }
+
+
+.HomeImage{
+  background-image: url('./assets//home.png');
+  background-position: center;
+  /* background-repeat: no-repeat; */
+  background-size: 100% 100%;
+}
