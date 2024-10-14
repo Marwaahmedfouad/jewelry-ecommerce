@@ -42,7 +42,7 @@ function Home() {
      
              {products.map((p, index) => (
                   <div className="col-md-3 mb-3" style={{cursor:'pointer'}} key={index}>
-           <Link to={`ProductDetail/${p.id}`}>
+           <Link to={`ProductDetail/${p.id}`} style={{textDecoration:'none'}}>
            <div className="card h-100">
                       <div className="card-body">
                         <h5 className="card-title"> {p.name}</h5>
