@@ -1,35 +1,27 @@
-// server.js
-
-const express = require('express');
-const cors = require('cors');
+const express = require('express')
+const cors = require('cors')
+const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
 const productRoutes = require('./routes/products');
+const cartRoutes = require('./routes/cart'); // Import the cart routes
 
-const app = express();
-const PORT = 5000;
+const app = express()
 
-// Enable CORS for all routes
-app.use(cors({
-  origin: 'http://localhost:3000', // Your frontend origin
-  methods: ['GET', 'POST'], // Allowed HTTP methods
-  credentials: true, // If you're sending cookies or authentication headers
-}));
+app.use(cors());
+app.use(bodyParser.json());
 
-// Middleware to parse JSON requests
-app.use(express.json());
+// Use the defined routes
+app.use('/api/auth', authRoutes);        // Authentication routes (register, login)
+app.use('/api/products', productRoutes); // Product routes (CRUD operations)
+app.use('/api/cart', cartRoutes);        // Cart routes
 
-// Use the routes
-app.use('/api/auth', authRoutes);
-app.use('/api/products', productRoutes);
-
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+// Error handling for 404
+app.use((req, res, next) => {
+  res.status(404).json({ message: "Route not found" });
 });
 
+const PORT = process.env.PORT || 5000;
 
-app.use(cors({
-  origin: 'http://localhost:3000', // Your frontend origin
-  methods: ['GET', 'POST'], // Allowed HTTP methods
-  credentials: true, // If you're sending cookies or authentication headers
-}));
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+})

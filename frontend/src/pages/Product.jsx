@@ -3,7 +3,6 @@ import { fetchProducts } from "../Redux/ProductsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styles from "../styles/Product.module.css";
-import { addToCart } from "../Redux/cartSlice";
 
 function Product() {
   const dispatch = useDispatch();
@@ -12,8 +11,11 @@ function Product() {
   );
   useEffect(() => {
     dispatch(fetchProducts());
+    
     console.log(products);
   }, [dispatch]);
+
+
 
   return (
     <div>
@@ -26,11 +28,11 @@ function Product() {
             <h5>Indulge in what we offer.</h5>
           </div>
           <section className={` container d-flex my-5`}>
-            <div className={`${styles.productCart} row productCart`}>
+            <div className={` row productCart`}>
               {products.map((p, index) => (
                 <div
-                  className="col-md-3 mb-3"
-                  style={{ cursor: "pointer" }}
+                  className={`${styles.productCart} col-md-3 mb-3`}
+                  style={{ cursor: "pointer", overflow: "hidden" }}
                   key={index}
                 >
                   <Link
@@ -44,7 +46,9 @@ function Product() {
                         <p className="card-text">{p.price}EGP</p>
                       </div>
                       <div className="m-auto">
-                        <button className={`${styles.buttonCart}`} onClick={()=>dispatch(addToCart(p))}>
+                        <button
+                          className={`${styles.buttonCart}`}
+                        >
                           Add To Cart
                         </button>
                       </div>

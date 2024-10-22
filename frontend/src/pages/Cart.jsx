@@ -1,24 +1,11 @@
-import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import React from 'react'
 
 function Cart() {
-  let { cartArray } = useSelector((state) => state.carts);
-
-  useEffect(() => {
-    console.log(cartArray);
-  }, [cartArray]);
-
   return (
     <div>
-      {cartArray.map((p, index) => (
-        <div key={index}>
-          <h3>Product: {p.name}</h3>
-          <p>Quantity: {p.quantity}</p>
-          <div> {p.id}</div>
-        </div>
-      ))}
+      Cart
     </div>
-  );
+  )
 }
 
-export default Cart;
+export default Cart

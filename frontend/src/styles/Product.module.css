@@ -10,4 +10,6 @@
 
 .productCart:hover .buttonCart {
     transform: translateY(0px);
+    overflow: hidden !important;
+
 }
