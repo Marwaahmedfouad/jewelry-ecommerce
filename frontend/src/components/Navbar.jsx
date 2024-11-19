@@ -5,9 +5,14 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearUserData, saveUserData } from "../Redux/authenticatinoSlice";
 import { useEffect } from "react";
+import CustomizedBadges from "../pages/CustomizedBadges";
+
+
+
 
 export default function Navbar() {
   const { userData } = useSelector((state) => state.authProjext);
+  const { CartsData,totalQuantity, isLoading, error } = useSelector((state) => state.getCart);
 
   const dispatch = useDispatch();
   const handleLogout = () => {
@@ -59,6 +64,7 @@ export default function Navbar() {
 
   const end = (
     <div className="d-flex align-items-center">
+
       <div>
         <InputText
           placeholder="Search"
@@ -66,10 +72,11 @@ export default function Navbar() {
           className="w-8rem sm:w-auto"
         />
       </div>
-
       <div className="px-2">
         <Link to="/cart">
-          <i className="pi pi-shopping-bag" style={{ color: "#708090" }}></i>
+        {/* <CustomizedBadges Quantity={totalQuantity}/> */}
+        <CustomizedBadges Quantity={totalQuantity} />
+
         </Link>
       </div>
 
@@ -107,7 +114,7 @@ export default function Navbar() {
   );
 
   return (
-    <div>
+    <div className="position-fixed w-100 shadow" style={{zIndex:'1'}}>
       <Menubar model={items} end={end} />
     </div>
   );
